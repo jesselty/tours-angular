@@ -1,0 +1,20 @@
+<div class="ty-packages">
+    <div class="ty-package col-sm-6 col-md-4 col-lg-3" ng-repeat="package in toursData.packages | orderBy:sort.by:sort.reverse" ng-show="(package.map | filterPackages:[toursData.filteredActivities,toursData.filteredDestinations])">
+        <div class="ty-package-inner">
+            <div class="ty-package-details">
+                <div class="ty-package-details-inner">
+                    <h3 ng-bind="::package.title" title="{{::package.title}}"></h3>
+                    <span class="ty-package-price">
+                            <span class="ty-web-rupee">Rs</span> {{::package.price}}
+                    </span>
+                    <div class="ty-package-info">
+                        <span class="ty-package-location"><i class="fa fa-map-marker"></i> {{::package.location}}</span>
+                        <span class="ty-bar-seperator ty-location-duration-seperator"></span>
+                        <span class="ty-package-duration"><i class="fa fa-clock-o"></i> {{::package.duration}} <span ng-bind="::(package.duration===1?'day':'days')"></span></span>
+                    </div>
+                </div>
+            </div>
+            <ty-show-img-on-load imgsrc="package.image" class="ty-smooth-load"></ty-show-img-on-load>
+        </div>
+    </div>
+</div>

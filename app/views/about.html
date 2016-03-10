@@ -1,0 +1,27 @@
+<div class="ty-page-content ty-search-page">
+    <div class="breadcrumb-links">
+        <ty-breadcrumb-category content="breadcrumbText"></ty-breadcrumb-category>
+        <form class="ty-trigger-slide">
+            <div class="ty-destination-input">
+                <input type="text" ng-model="triggerslideValue" placeholder="Select Destination"  ng-focus="openSlideAndShow('destination')" readonly />
+            </div>
+        </form>
+    </div>
+    <div class="filter-block ty-desktop">
+        <div class="navigate-filter">
+            NAVIGATE BY :
+            <ty-activities class="ty-desktop" ng-if="category=='activities'">TYPE OF ACTIVITY</ty-activities>
+            <ty-destinations class="ty-desktop">DESTINATIONS</ty-destinations>
+        </div>
+        <div class="results-sortby">
+            <span class="ty-results-found">74 results found</span>
+            <ty-sort-by class="ty-desktop ty-sort-icon">SORT BY</ty-sort-by>
+        </div>
+    </div>
+    <ty-filter-block></ty-filter-block>
+    <ty-packages></ty-packages>
+    <ty-mobile-options></ty-mobile-options>
+</div>
+<div class="ty-float-buttons ty-mobile-filter" ng-if="category=='activities'" ng-click="openSlideAndShow('activity')"><i class="fa fa-filter ty-filter-icon"></i></div>
+<div class="ty-float-buttons ty-mobile-sort" ng-click="openSlideAndShow('sort')"><i class="fa fa-exchange ty-sort-icon"></i></div>
+<button class="ty-done-button" ng-show="slideList.opened" ng-click="closeSlide()">Done</button>

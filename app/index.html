@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="myAppApp" ng-strict-di ng-class="{'ty-body-fixed':slideList.opened || menuShow}">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="page-wrapper">
+        <div class="ty-menu-block" ng-class="{'ty-open-menu':menuShow}">
+            <ul class="ty-menu">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="/package/activities">Activities</a>
+                </li>
+                <li>
+                    <a href="/package/tours">Tours & Packages</a>
+                </li>
+                <li>
+                    <a href="/package/cancel">Cancel Booking</a>
+                </li>
+            </ul>
+        </div><!-- removing space on right due to new line
+        --><div class="ty-main-block">
+            <div class="header">
+                <a href="/" class="ty-logo ty-link">
+                </a>
+                <div class="navbar">
+                    <ul class="ty-link-list">
+                        <li><a href="/" class="ty-link">Buses</a></li>
+                        <li><a href="/package/activities" class="ty-link">Activities</a></li>
+                        <li><a href="/package/tours" class="ty-link">Tours</a></li>
+                    </ul>
+                </div>
+                <div class="header-right">
+                    <i class="fa fa-phone contact-icon"></i>
+                    <div class="contact-info">
+                        <span class="contact-number">1800 103 4482</span>
+                        <div class="contact-time">9am - 6pm (Mon-Fri)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid ty-page">
+                <div ng-view="" class="row"></div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    <p><span class="glyphicon glyphicon-heart"></span> &copy;</p>
+                </div>
+            </div>
+        </div>
+        <div class="ty-mobile-menu-icon" ng-click="toggleSideMenu()"></div>
+        <a href="tel:1800 103 4482" class="ty-float-buttons ty-mobile-contact"><i class="fa fa-phone ty-phone-icon"></i></a>
+        <div class="ty-modal-box" ng-click="closeModal()" ng-show="modalShow" ng-cloak></div>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/directives/tyshowimgonload.js"></script>
+    <script src="scripts/directives/tybreadcrumbcategory.js"></script>
+    <script src="scripts/directives/tyfilterlist.js"></script>
+    <script src="scripts/services/toursservice.js"></script>
+    <script src="scripts/services/toursdata.js"></script>
+    <script src="scripts/directives/tyactivities.js"></script>
+    <script src="scripts/directives/tydestinations.js"></script>
+    <script src="scripts/directives/tysortby.js"></script>
+    <script src="scripts/directives/tyactivitieslist.js"></script>
+    <script src="scripts/directives/tydestinationslist.js"></script>
+    <script src="scripts/directives/tysortbylist.js"></script>
+    <script src="scripts/filters/matchesanyin.js"></script>
+    <script src="scripts/directives/tyfilterblock.js"></script>
+    <script src="scripts/filters/filterpackages.js"></script>
+    <script src="scripts/directives/typackages.js"></script>
+    <script src="scripts/directives/tymobileoptions.js"></script>
+    <script src="scripts/controllers/details.js"></script>
+    <script src="scripts/directives/tydetailsdesc.js"></script>
+    <script src="scripts/services/commonfactory.js"></script>
+    <script src="scripts/services/detailsdata.js"></script>
+    <script src="scripts/services/detailsservice.js"></script>
+    <script src="scripts/directives/typackagedetails.js"></script>
+    <script src="scripts/directives/tyeachdesc.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

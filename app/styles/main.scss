@@ -1,0 +1,1050 @@
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
+// endbower
+@import "tyvariables.scss";
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.eot');
+    /* IE9 Compat Modes */
+    src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Web Rupee';
+    src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.eot');
+    /* IE9 Compat Modes */
+    src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.woff2') format('woff2'), /* Super Modern Browsers */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.woff') format('woff'), /* Pretty Modern Browsers */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/WebRupee.V2.0.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* Apply box-sizing:border-box; to all elements */
+
+* {
+    @include box-sizing(border-box);
+}
+
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+
+/* sprite footer common css */
+
+.sprite-footer {
+    background: $sprite-1;
+}
+
+
+/* Hide element till angular is loaded */
+
+[ng-cloak] {
+    display: none;
+}
+
+// =====================================  Common Classes =============================== //
+
+/* Activity Icons styling */
+
+.ty-activity-icon {
+    display: inline-block;
+    width: 30px;
+    height: 21px;
+    background-image: url('http://d29z0kpkvoln4z.cloudfront.net/img/packages/menu_icons/activity_sprite.png');
+    vertical-align: middle;
+    &.ty-aero-sports {
+        background-position: -32px 0;
+    }
+    &.ty-motor-sports {
+        background-position: -67px 0;
+    }
+    &.ty-extream-sports {
+        background-position: -102px 0;
+    }
+    &.ty-city-walks {
+        background-position: -134px 0;
+    }
+    &.ty-camping-trekking {
+        background-position: -164px 0;
+    }
+    &.ty-sporting-activities {
+        background-position: -194px 0;
+    }
+    &.ty-theme-parks {
+        background-position: -224px 0;
+    }
+}
+
+
+/* Styling for Clear selection text */
+
+.ty-clear {
+    cursor: pointer;
+    color: $ty-color;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.ty-clear:hover {
+    text-decoration: underline;
+}
+
+
+/* All links on ty tours */
+
+.ty-link {
+    padding: 5px 2px;
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* Sidebar menu styles */
+
+.ty-main-block,
+.ty-menu-block {
+    display: inline-block;
+    background-color: $background-gray;
+    white-space: normal;
+}
+
+.ty-menu-block {
+    vertical-align: top;
+    z-index: 10;
+    min-width: 0%;
+    @include transition(0.6s ease min-width);
+    &.ty-open-menu {
+        min-width: 100%;
+    }
+    .ty-menu {
+        @extend .pos-elem-horizontal-center;
+        list-style: none;
+        padding-top: 40px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        max-width: 280px;
+        height: 100%;
+        overflow: auto;
+        padding-left: 0;
+        li {
+            border-bottom: $border-1;
+            &:last-of-type {
+                border-bottom-width: 0;
+            }
+            a {
+                @extend .ty-link;
+                display: inline-block;
+                width: 100%;
+                height: 40px;
+                padding: 10px 10px;
+            }
+        }
+    }
+}
+
+.ty-main-block {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+
+
+/* Mobile menu button styling */
+
+.ty-mobile-menu-icon {
+    @include transition(0.4s ease color);
+    @extend .fa;
+    @extend .fa-bars;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+body.ty-body-fixed {
+    overflow: hidden;
+    .ty-mobile-menu-icon {
+        // @extend .fa-times;
+        color: black;
+    }
+    .page-wrapper {
+        overflow: hidden;
+    }
+    .ty-float-buttons {
+        &.ty-mobile-contact {
+            top: -50px;
+        }
+        &.ty-mobile-filter {
+            bottom: -100px;
+        }
+        &.ty-mobile-sort {
+            bottom: -50px;
+        }
+    }
+}
+
+
+/* All list with links on ty tours */
+
+.ty-link-list {
+    li {
+        display: inline-block;
+        list-style: none;
+    }
+}
+
+
+/* Breadcrumb */
+
+.ty-breadcrumb {
+    font-size: 12px;
+}
+
+
+/* Each breadcrumb category */
+
+.ty-category {
+    position: relative;
+    padding-left: 12px;
+    display: inline-block;
+    &>div::first-letter {
+        text-transform: uppercase;
+    }
+}
+
+.ty-category:after {
+    @extend .pos-elem-vertical-center;
+    content: "→";
+    left: 0;
+    height: 14px;
+}
+
+
+/* Route Content Area */
+
+.ty-page {
+    min-height: calc(100% - 108px);
+    .ty-page-content {
+        width: 100%;
+    }
+}
+
+
+/* Seperate Content with "|" */
+
+.ty-bar-seperator {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.ty-bar-seperator:before {
+    content: "|";
+}
+
+
+/* Remove padding start for ul elements */
+
+.ty-ul-pad-left {
+    padding-left: $ul-padding-left;
+}
+
+
+/* Filter and Sort Styles */
+
+// @TODOTMP->edit_to_make_better
+.ty-filter-block {
+    position: relative;
+    &.ty-sort-icon {
+        .ty-filter {
+            .ty-icon {
+                @extend .fa-exchange;
+                @include rotate(90deg);
+            }
+        }
+    }
+    .ty-filter {
+        padding: 5px 5px;
+        .ty-icon {
+            @extend .fa-caret-down;
+        }
+        .ty-icon.up {
+            @include rotate(180deg);
+        }
+    }
+    .ty-filter-list-block {
+        .ty-filter-list {
+            position: relative;
+            list-style: none;
+            z-index: 2;
+            ul {
+                list-style: inherit;
+                li {
+                    padding: 5px 5px 5px 5px;
+                }
+            }
+        }
+    }
+    &.ty-desktop {
+        .ty-filter {
+            position: relative;
+            cursor: pointer;
+            color: black;
+            &.modal-open {
+                color: white;
+                z-index: 2;
+            }
+            .ty-filter-name {
+                text-transform: uppercase;
+            }
+        }
+        .ty-filter-list-block {
+            position: absolute;
+            top: 100%;
+            &.center {
+                left: 50%;
+                .ty-filter-list {
+                    position: relative;
+                    left: -50%;
+                }
+            }
+            &.left {
+                left: 0;
+            }
+            &.right {
+                right: 0;
+            }
+            &.activity-filter {
+                left: 70%
+            }
+            &.filters-active {
+                top: 170%;
+            }
+            .type-list {
+                .ty-clear {
+                    max-width: 198px;
+                }
+            }
+        }
+    }
+    &.ty-mobile {
+        .ty-filter {
+            padding: 10px 5px;
+            border-bottom: $border-1;
+        }
+        .ty-filter-list-block {
+            .ty-filter-list {
+                margin-top: 0;
+                padding: 10px;
+                .ty-activity-heading {
+                    line-height: 20px;
+                    border-bottom: $border-1;
+                }
+                &>li {
+                    padding: 0 10px 10px;
+                }
+            }
+            .ty-destination-input-block {
+                padding-bottom: 15px;
+            }
+        }
+    }
+}
+
+.ty-filter-list {
+    .unavailable:before {
+        @extend .fa;
+        @extend .fa-times;
+        display: inline-block;
+        vertical-align: top;
+        visibility: visible;
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+        color: $ty-color;
+    }
+}
+
+.ty-mobile-filter {
+    color: white;
+    .ty-filter {
+        color: black;
+        background-color: $background-gray;
+    }
+    .ty-filter-list {
+        margin: 15px 0;
+        padding: 0 10px;
+        li {
+            list-style: none;
+        }
+        form {
+            padding-left: 20px;
+        }
+    }
+}
+
+// @ENDTODOTMP->edit_to_make_better
+
+/* Float element right */
+
+.ty-align-right {
+    @include clearfix();
+    float: right;
+    display: inline-block;
+}
+
+
+/* Showing number of results */
+
+.ty-results-found {
+    color: #908d8d;
+}
+
+
+/* Modal Box */
+
+.ty-modal-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Tags common styles */
+
+.ty-tag {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin-right: 3px;
+    border: $border-1;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+    height: 18px;
+    &.unavailable {
+        color: $ty-unavailable;
+    }
+    label {
+        cursor: pointer;
+        padding: 4px 4px;
+    }
+}
+
+
+/* Styles for tour packages */
+
+.ty-packages {
+    padding-top: 8px;
+    .ty-package {
+        position: relative;
+        margin-bottom: 12px;
+        .ty-package-inner {
+            @include box-shadow(0 0 5px gray);
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background-color: gray;
+            .ty-package-details {
+                @include transition(0.4s ease all);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                @include box-shadow(inset 0 -180px 180px -180px black);
+                .ty-package-details-inner {
+                    color: white;
+                    position: absolute;
+                    display: inline-block;
+                    width: 100%;
+                    bottom: 0;
+                    padding: 10px 10px;
+                    h3,
+                    .ty-package-info {
+                        @extend .ty-stroke-outline;
+                        @extend .ty-font-inherit;
+                    }
+                    h3 {
+                        white-space: nowrap;
+                        overflow-x: hidden;
+                        text-overflow: ellipsis;
+                        padding-right: 80px;
+                        margin: 5px 0;
+                    }
+                    .ty-package-price {
+                        position: absolute;
+                        bottom: 33px;
+                        right: 10px;
+                        padding: 5px 10px;
+                        background-color: $ty-color;
+                    }
+                    .ty-package-info {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Async image loading element */
+
+.ty-async-img {
+    display: inline-block;
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    @include transition(0.6s ease opacity);
+    &.ty-smooth-load {
+        opacity: 0;
+    }
+}
+
+.ty-async-img.ty-smooth-load.loaded {
+    opacity: 10;
+}
+
+
+/* Rupee Symbol Font */
+
+.ty-web-rupee {
+    font-family: 'Web Rupee', 'Open Sans', sans-serif;
+}
+
+
+/* Add stoke line to text */
+
+.ty-stroke-outline {
+    color: white;
+    text-shadow: -1px -1px 0 $text-shadow-color, 1px -1px 0 $text-shadow-color, -1px 1px 0 $text-shadow-color, 1px 1px 0 $text-shadow-color;
+    .fa {
+        text-shadow: none;
+    }
+    &.ty-font-inherit {
+        .fa {
+            text-shadow: inherit;
+        }
+    }
+}
+
+
+/* Mobile filter overlay trigger block */
+
+.ty-trigger-slide {
+    padding: 5px 0;
+    .ty-destination-input {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+
+/* Mobile filter overlay trigger input */
+
+.ty-destination-input {
+    position: relative;
+    color: black;
+    width: 100%;
+    &:before {
+        @extend .fa;
+        @extend .fa-map-marker;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 8px;
+        bottom: 0;
+        color: black;
+        height: 15px;
+    }
+    &.input-max-width {
+        max-width: 300px;
+    }
+    &>input {
+        width: inherit;
+        padding: 5px 5px 5px 25px;
+    }
+}
+
+
+/* Styled Checkboxes */
+
+input[type='checkbox'] {
+    visibility: hidden;
+}
+
+input[type='checkbox']:before {
+    @extend .fa;
+    content: " ";
+    display: inline-block;
+    visibility: visible;
+    vertical-align: middle;
+    font-size: 12px;
+    width: 12px;
+    height: 12px;
+    color: $ty-color;
+    box-shadow: 0 0 0 1px $ty-color;
+}
+
+input[type='checkbox']:checked:before {
+    @extend .fa-check;
+}
+
+
+/* Styled Radio */
+
+input[type='radio'] {
+    visibility: hidden;
+}
+
+input[type='radio']:before {
+    content: " ";
+    display: inline-block;
+    visibility: visible;
+    vertical-align: middle;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px $ty-color;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    color: $ty-color;
+    background-color: white;
+}
+
+input[type='radio']:checked:before {
+    background-color: $ty-color;
+}
+
+
+/* Absolute Element vertical center */
+
+.pos-elem-horizontal-center,
+.pos-elem-vertical-center {
+    position: absolute;
+    margin: auto;
+}
+
+.pos-elem-horizontal-center {
+    left: 0;
+    right: 0;
+}
+
+.pos-elem-vertical-center {
+    top: 0;
+    bottom: 0;
+}
+
+
+/* Mobile Contact Button */
+
+.ty-float-buttons {
+    position: fixed;
+    z-index: 1;
+    border: 1px solid #8C8787;
+    border-radius: 50%;
+    box-shadow: 0 0 3px $floating-icons-border-color;
+    width: 42px;
+    height: 42px;
+    &.ty-mobile-contact {
+        @include transition(0.4s ease top);
+        top: 10px;
+        right: 15px;
+        background-color: #2EB12E;
+    }
+    &.ty-mobile-filter {
+        @include transition(0.4s ease bottom);
+        bottom: 75px;
+        left: 15px;
+        background-color: #5247EC;
+    }
+    &.ty-mobile-sort {
+        @include transition(0.4s ease bottom);
+        bottom: 20px;
+        left: 15px;
+        background-color: #5247EC;
+    }
+    .ty-phone-icon,
+    .ty-filter-icon,
+    .ty-sort-icon {
+        @extend .pos-elem-horizontal-center;
+        @extend .pos-elem-vertical-center;
+        font-size: 22px;
+        color: white;
+        height: 20px;
+    }
+    .ty-phone-icon {
+        width: 20px;
+    }
+    .ty-filter-icon {
+        width: 19px;
+    }
+    .ty-sort-icon {
+        width: 19px;
+        @include rotate(90deg);
+    }
+}
+
+
+/* Done button for filters */
+
+.ty-done-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    padding: 10px 10px;
+    color: white;
+    background-color: $ty-color;
+    border: 1px solid black;
+    border-bottom: 0;
+}
+
+.ty-description-block {
+    background-color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 20px;
+    .ty-desc-title {
+        color: $ty-color;
+        font-weight: bold;
+    }
+    ul {
+        padding-left: 15px;
+        margin: 8px 0;
+        li {
+            margin-bottom: 8px;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.ty-each-desc {
+    margin-bottom: 23px;
+}
+
+/* Tours details page right side blocks */
+
+.ty-right {
+    background-color: white;
+    margin-top: 10px;
+    h4 {
+        margin: 0 auto;
+        padding: 15px 15px 5px;
+        border-bottom: $border-1;
+    }
+}
+
+html,
+body {
+    font-family: 'Proxima Nova', 'Open Sans', sans-serif;
+    height: 100%;
+    color: #555;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    width: 100%;
+    white-space: nowrap;
+}
+
+input {
+    border: $border-1;
+    border-radius: 3px;
+}
+
+// =====================================  End Common Classes =============================== //
+// =================================== Unique Style classes ================================ //
+.page-wrapper {
+    height: 100%;
+}
+
+
+/* Header block */
+
+.header {
+    width: 100%;
+    height: 45px;
+    padding: 10px 15px;
+    color: white;
+    background-color: $ty-color;
+    .ty-logo {
+        margin: -5px 0 0 50px;
+        display: inline-block;
+        vertical-align: top;
+        width: 35px;
+        height: 35px;
+        background-image: url('/images/ty-logo.png');
+    }
+    .navbar {
+        display: none;
+        font-size: 15px;
+        vertical-align: sub;
+        .ty-link-list {
+            padding-left: 0;
+            margin-top: 0;
+        }
+        .ty-link {
+            margin-left: 10px;
+        }
+    }
+    .header-right {
+        @extend .ty-align-right;
+        display: none;
+        .contact-icon {
+            font-size: 30px;
+            @include rotate(35deg);
+        }
+        .contact-info {
+            vertical-align: top;
+            display: inline-block;
+            text-align: center;
+            .contact-number {
+                font-weight: bold;
+            }
+            .contact-time {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.ty-page {
+    .breadcrumb-links {
+        color: white;
+        background-color: $ty-color;
+        padding: 0 15px;
+        .ty-breadcrumb {
+            display: inline-block
+        }
+    }
+    // @TODOTMP->edit_to_make_better
+    .filter-block {
+        .filter-list {
+            li {
+                padding: 5px 2px;
+                label {
+                    padding: 5px 3px;
+                }
+            }
+        }
+        &.ty-mobile {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            background-color: white;
+            width: 100%;
+            font-size: 13px;
+            .ty-mobile-filter {
+                @include transition(0.4s ease min-height);
+                width: 100%;
+                height: 0;
+                min-height: 0;
+                background-color: $ty-transparent-bg;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                overflow: auto;
+                &.show-list {
+                    padding-bottom: 40px;
+                    min-height: 100%;
+                }
+            }
+            .ty-mobile-options {
+                position: relative;
+                z-index: 1;
+                background-color: white;
+                border: $border-1;
+                padding: 10px 0;
+                text-align: center;
+                .ty-filter {
+                    padding: 0 0;
+                }
+            }
+        }
+        &.ty-desktop {
+            display: none;
+            border-bottom: $border-1;
+            .navigate-filter {
+                display: inline-block;
+                font-size: 12px;
+            }
+            .results-sortby {
+                @extend .ty-align-right;
+                font-size: 12px;
+                margin-top: -3px;
+                .ty-results-found {}
+            }
+            .filter-list {
+                background-color: white;
+                min-width: 200px;
+                min-height: 250px;
+                border: $border-1;
+                &.type-list {
+                    position: relative;
+                    width: 350px;
+                    background-color: $background-gray;
+                    &>li {
+                        padding: 10px 10px;
+                    }
+                    &>li ul {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 150px;
+                        height: 100%;
+                        background-color: white;
+                        li {
+                            display: none;
+                        }
+                    }
+                    &>li:hover ul {
+                        z-index: 1;
+                        li {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // @ENDTODOTMP->edit_to_make_better
+    .active-filters {
+        display: none;
+        padding: 5px 0;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .ty-menu-block,
+    .ty-mobile-menu-icon,
+    .ty-float-buttons {
+        display: none;
+    }
+    .ty-destination-input {
+        padding: 5px 5px;
+    }
+    .ty-filter-list {
+        .unavailable {
+            text-decoration: none;
+        }
+    }
+    .ty-trigger-slide {
+        display: none;
+    }
+    .ty-link:hover {
+        color: $ty-color;
+    }
+    body.ty-body-fixed {
+        overflow: visible;
+    }
+    .ty-filter-block {
+        display: inline-block;
+    }
+    .ty-modal-box {
+        width: 100%;
+        height: 100%;
+    }
+    .ty-done-button {
+        display: none;
+    }
+    .ty-details {
+        .ty-details-info {
+            padding-top: 10px;
+        }
+    }
+    .header {
+        height: 58px;
+        color: black;
+        background-color: white;
+        border-bottom: $border-1;
+        padding: 10px 50px;
+        .ty-logo {
+            margin: 0 0;
+            width: 195px;
+            height: 35px;
+            background-image: url('http://d29z0kpkvoln4z.cloudfront.net/img/v2/common_sprite_20160202.png');
+        }
+        .navbar {
+            display: inline-block;
+            .ty-link-list {
+                padding-left: 30px;
+            }
+        }
+        .header-right {
+            display: inline-block;
+        }
+    }
+    .ty-page {
+        .filter-block.ty-desktop,
+        .active-filters {
+            display: block;
+            padding: 5px 15px;
+        }
+        .filter-block.ty-desktop {
+            padding: 0 15px;
+        }
+        .breadcrumb-links {
+            color: black;
+            background-color: #DCDADA;
+            padding: 5px 15px;
+        }
+    }
+    .ty-packages {
+        padding-top: 0;
+    }
+    .ty-search-page {
+        .ty-packages {
+            .ty-package {
+                margin-bottom: 30px;
+                .ty-package-inner {
+                    &:hover {
+                        @include box-shadow(0 0 12px gray);
+                    }
+                }
+            }
+        }
+    }
+    .ty-details {
+        .ty-packages {
+            .ty-package {
+                .ty-package-inner {
+                    height: 400px;
+                }
+            }
+        }
+    }
+    .ty-right-checkout {
+        margin-top: 0;
+    }
+    .filter-block.ty-mobile {
+        display: none;
+    }
+}
+
+// =================================== End Unique Style classes ================================ //

@@ -1,0 +1,20 @@
+<form>
+    <ul class="ty-filter-list filter-list destination-list ty-ul-pad-left">
+        <div class="ty-clear" ng-click="clearSelection('filteredDestinations')" ng-show="isAnyDestinationApplied()">Clear</div>
+        <div class="ty-destination-input-block">
+            <div class="ty-destination-input">
+                <input type="text" ng-model="triggerslide.name" placeholder="Select Destination" ng-focus="openSlide()" />
+            </div>
+        </div>
+        <li ng-repeat="destination in toursData.destinations | filter:triggerslide | orderBy:['orderNo','name'] track by $index" ng-show="showIfAvailable(destination)" ng-click="closeSlideList()">
+            <label ng-click="onFilter('filteredDestinations', destination, 'radio')">
+                <input type="radio" name="dest" value="true" ng-checked="toursData.filteredDestinations[destination.name]" /> {{destination.name}}
+            </label>
+        </li>
+        <li ng-repeat="destination in toursData.destinations | orderBy:['orderNo','name'] track by $index" ng-show="!showIfAvailable(destination)">
+            <label class="unavailable">
+                {{destination.name}}
+            </label>
+        </li>
+    </ul>
+</form>

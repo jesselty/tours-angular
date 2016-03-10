@@ -1,0 +1,7 @@
+<div>
+    <div class="ty-desc-title" ng-transclude></div>
+    <span ng-bind="::eachdesc.note"></span>
+    <ul>
+        <li ng-repeat="list in eachdesc.list" ng-bind="::list"></li>
+    </ul>
+</div>
