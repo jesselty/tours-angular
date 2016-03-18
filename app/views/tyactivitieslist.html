@@ -6,7 +6,7 @@
             <ul class="ty-ul-pad-left">
                 <li ng-repeat="subCategory in typeCategory.values | orderBy:['name','orderNo'] track by $index" ng-show="showIfAvailable(subCategory)">
                     <label ng-click="onFilter('filteredActivities', subCategory)">
-                        <input type="checkbox" ng-model="subCategory.isChecked" ng-checked="toursData.filteredActivities[subCategory.name]" /> {{::subCategory.name}} </label>
+                        <input type="checkbox" ng-model="subCategory.isChecked" ng-init="setFilterCheckedIfInLocal(subCategory)" /> {{::subCategory.name}} </label>
                 </li>
                 <li ng-repeat="subCategory in typeCategory.values | orderBy:['name','orderNo'] track by $index" ng-show="!showIfAvailable(subCategory)">
                     <label class="unavailable"> {{::subCategory.name}} </label>

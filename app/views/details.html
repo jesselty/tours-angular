@@ -2,7 +2,7 @@
     <div class="breadcrumb-links">
         <ty-breadcrumb-category content="breadcrumbText"></ty-breadcrumb-category>
     </div>
-    <div class="ty-details-info" ng-repeat="package in detailsData.packages">
+    <div class="ty-details-info" ng-repeat="eachpackage in detailsData.packages">
         <div class="col-sm-8">
             <ty-package-details class="row"></ty-package-details>
             <div class="row">
@@ -11,17 +11,22 @@
         </div>
         <div class="col-sm-4">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="ty-right ty-right-checkout">
-                        hello
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="ty-right ty-right-help">
-                        <h4>Need help?</h4>
+                <ty-checkout class="col-xs-12"></ty-checkout>
+            </div>
+        </div>
+        <div class="ty-mobile-overlay" ng-class="{'ty-open':slideList.opened}">
+            <input type="text" name="journeyDate" placeholder="Select Journey Date" class="ty-input-control journey-date-select" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.date" is-open="datePicker.isOpen" datepicker-options="datePicker.options" show-button-bar="datePicker.showButtonBar" ng-required="true" close-text="Close" ng-pattern="datePicker.regexCheck" ng-readonly="true" ng-click="toggleCalendar($event)" style="display:none;" />
+            <div class="checkout-packages ty-mobile">
+                <div class="checkout-packages-list" ng-show="selectPackages.isOpen" ng-click="stopPropagation($event)">
+                    <div class="checkout-packages-eachlist" ng-repeat="option in eachpackage.packageOptions">
+                        <label ng-click="setPackageAsSelected(option)">
+                            <input type="radio" name="packageOptions" ng-model="detailsData.selectPackages.details.price" ng-value="::option.price" />{{::option.name}}</label>
+                        <div class="packages-list-description">{{::option.description}}</div>
+                        <div class="checkout-price"><span class="ty-web-rupee">Rs</span>{{::option.price}}</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<button class="ty-done-button" ng-show="slideList.opened" ng-click="closeSlide()">Done</button>

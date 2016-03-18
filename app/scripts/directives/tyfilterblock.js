@@ -7,7 +7,7 @@
  * # tyFilterBlock
  */
 angular.module('myAppApp')
-    .directive('tyFilterBlock', ['$rootScope', 'commonFactory', function($rootScope, commonFactory) {
+    .directive('tyFilterBlock', ['CONSTANTS', '$rootScope', 'commonFactory', function(CONSTANTS, $rootScope, commonFactory) {
         return {
             templateUrl: '/views/tyfilterblock.html',
             restrict: 'E',
@@ -29,7 +29,7 @@ angular.module('myAppApp')
                             $scope.triggerslideValue = type.name;
                         }
                         filterCategory[type.name] = type;
-                        $rootScope.$broadcast('close-modal');
+                        $rootScope.$broadcast(CONSTANTS.CLOSE_MODAL);
                         $scope.toursData.slideList.opened = false;
                     }
 

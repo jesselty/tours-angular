@@ -8,14 +8,24 @@
  *
  * Main module of the application.
  */
+
+loadCSS("styles/main.css", document.getElementById("loadcss"));
 angular
     .module('myAppApp', [
         'ngCookies',
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'ui.bootstrap'
     ])
+    .constant("CONSTANTS", {
+        'DATE_REGEX': /^(3[0-1]|[0-2][0-9]|0[1-9])\/(1[0-2]|0[1-9])\/\d{4}/,
+        // 'DATE_REGEX': /^(1[0-2]|0?[1-9])\/(3[0-1]|[0-2][0-9]|[1-9])\/\d{4}/,
+        'OPEN_MODAL': 'open-modal',
+        'CLOSE_MODAL': 'close-modal',
+        'DATE_FORMAT': 'dd/MM/yyyy'
+    })
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         function checkCategory($route, $location) {
             var toursCategory = $route.current.params.category;
@@ -30,7 +40,7 @@ angular
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
-            .when('/package/:category', {
+            .when('/:category', {
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl',
                 controllerAs: 'about',
@@ -38,7 +48,7 @@ angular
                     paramCheck: ['$route', '$location', checkCategory]
                 }
             })
-            .when('/package/:category/:slug?', {
+            .when('/:category/:slug?', {
                 templateUrl: 'views/details.html',
                 controller: 'DetailsCtrl',
                 controllerAs: 'details',
@@ -51,7 +61,7 @@ angular
             });
 
         $locationProvider.html5Mode(true);
-    }]).run(['$rootScope', '$timeout', 'toursData', function($rootScope, $timeout, toursData) {
+    }]).run(['CONSTANTS', '$rootScope', '$timeout', 'toursData', function(CONSTANTS, $rootScope, $timeout, toursData) {
 
         /* properties ,methods and event needed for $rootScope */
         $rootScope.slideList = toursData.slideList;
@@ -64,14 +74,16 @@ angular
             }, 1000);
         });
 
-        $rootScope.$on('open-modal', function() {
+        $rootScope.$on(CONSTANTS.OPEN_MODAL, function() {
             $rootScope.modalShow = true;
         });
-        $rootScope.$on('close-modal', function() {
+        $rootScope.$on(CONSTANTS.CLOSE_MODAL, function() {
             $rootScope.modalShow = false;
         });
         $rootScope.closeModal = function() {
-            $rootScope.$broadcast('close-modal');
+            if ($rootScope.modalShow) {
+                $rootScope.$broadcast(CONSTANTS.CLOSE_MODAL);
+            }
         };
 
         $rootScope.toggleSideMenu = function() {

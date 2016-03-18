@@ -1,0 +1,34 @@
+<div>
+    <div class="ty-right right-checkout" ng-class="{'checkout-open':selectPackages.isOpen || datePicker.isOpen,'rC-open':checkoutBlock.isCollapsed}" ng-click="closeAllModals()">
+        <form class="ty-right-wrapper" name="checkout">
+            <div class="checkout-packages ty-desktop">
+                <input type="text" placeholder="Select Package" class="ty-input-actionable checkout-select-package" ng-model="selectPackages.details.name" ng-click="openPackageSelection($event)" ng-readonly="true">
+                <div class="checkout-packages-list" ng-show="selectPackages.isOpen" ng-click="stopPropagation($event)">
+                    <div class="checkout-packages-eachlist" ng-repeat="option in eachpackage.packageOptions">
+                        <label ng-click="setPackageAsSelected(option)">
+                            <input type="radio" name="packageOptions" ng-model="selectPackages.details.price" ng-value="::option.price">{{::option.name}}</label>
+                        <div class="packages-list-description">{{::option.description}}</div>
+                        <div class="checkout-price"><span class="ty-web-rupee">Rs</span>{{::option.price}}</div>
+                    </div>
+                </div>
+            </div>
+            <p class="ty-input-group col-xs-10 col-sm-12">
+                <input type="text" name="journeyDate" placeholder="Select Journey Date" class="ty-input-control journey-date-select" uib-datepicker-popup="{{datePicker.format}}" ng-model="datePicker.date" is-open="datePicker.isOpen" datepicker-options="datePicker.options" show-button-bar="datePicker.showButtonBar" ng-required="true" close-text="Close" ng-pattern="datePicker.regexCheck" ng-readonly="true" ng-click="toggleCalendar($event)" />
+                <button type="button" class="ty-action-btn" ng-click="toggleCalendar($event)"><i class="fa fa-calendar"></i></button>
+            </p>
+            <div class="ty-error" ng-show="checkout.journeyDate.$dirty && !checkout.journeyDate.$valid">Not a valid date</div>
+            <p class="traveller-block col-xs-2 col-sm-12">
+                <label class="traveller-select">
+                    <span>Provide No. of Travellers &nbsp;</span>
+                    <select class="traveller-select-options" ng-model="detailsData.noOfTravellersSelected" ng-options="obj.text for obj in eachpackage.travellerCountList track by obj.value" ng-init="setCountAsSelected()">
+                    </select>
+                </label>
+            </p>
+            <div class="checkout-price"><span class="ty-web-rupee">Rs</span> {{selectPackages.details.price*detailsData.noOfTravellersSelected.value}}</div>
+            <button class="ty-button ty-button-orange checkout-book col-xs-12">Book Now
+                <div class="checkout-price"><span class="ty-web-rupee">Rs</span> {{selectPackages.details.price*detailsData.noOfTravellersSelected.value}}</div>
+            </button>
+        </form>
+        <div class="checkout-collapse-btn" ng-click="toggleCheckout()"></div>
+    </div>
+</div>

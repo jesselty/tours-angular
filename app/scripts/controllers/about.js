@@ -104,7 +104,7 @@ angular.module('myAppApp')
             toursData.filteredDestinations = commonFactory.getFromLocalStorage($scope.category + 'filteredDestinations');;
             $scope.categoryText = $scope.category == "activities" ? "Activities" : "Tours & Packages";
             $scope.breadcrumbText = [
-                { 'name': $scope.categoryText, 'url': "/package/" + $routeParams.category }
+                { 'name': $scope.categoryText, 'url': "/" + $routeParams.category }
             ];
             $scope.toursData = toursData;
             $scope.filter = toursData.filter;

@@ -7,13 +7,663 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/" />
+    <style>
+    /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+    
+    html {
+        font-family: sans-serif; // 1
+        -ms-text-size-adjust: 100%; // 2
+        -webkit-text-size-adjust: 100%; // 2
+    }
+    
+    body {
+        margin: 0;
+    }
+    
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    main,
+    menu,
+    nav,
+    section,
+    summary {
+        display: block;
+    }
+    
+    audio,
+    canvas,
+    progress,
+    video {
+        display: inline-block; // 1
+        vertical-align: baseline; // 2
+    }
+    
+    audio:not([controls]) {
+        display: none;
+        height: 0;
+    }
+    
+    [hidden],
+    template {
+        display: none;
+    }
+    
+    a {
+        background-color: transparent;
+    }
+    
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+    
+    abbr[title] {
+        border-bottom: 1px dotted;
+    }
+    
+    b,
+    strong {
+        font-weight: bold;
+    }
+    
+    dfn {
+        font-style: italic;
+    }
+    
+    h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+    }
+    
+    mark {
+        background: #ff0;
+        color: #000;
+    }
+    
+    small {
+        font-size: 80%;
+    }
+    
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+    
+    sup {
+        top: -0.5em;
+    }
+    
+    sub {
+        bottom: -0.25em;
+    }
+    
+    img {
+        border: 0;
+    }
+    
+    svg:not(:root) {
+        overflow: hidden;
+    }
+    
+    figure {
+        margin: 1em 40px;
+    }
+    
+    hr {
+        box-sizing: content-box;
+        height: 0;
+    }
+    
+    pre {
+        overflow: auto;
+    }
+    
+    code,
+    kbd,
+    pre,
+    samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+    }
+    
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+    
+    button {
+        overflow: visible;
+    }
+    
+    button,
+    select {
+        text-transform: none;
+    }
+    
+    button,
+    html input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+    
+    button[disabled],
+    html input[disabled] {
+        cursor: default;
+    }
+    
+    button::-moz-focus-inner,
+    input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+    
+    input {
+        line-height: normal;
+    }
+    
+    input[type="checkbox"],
+    input[type="radio"] {
+        box-sizing: border-box; // 1
+        padding: 0; // 2
+    }
+    
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        height: auto;
+    }
+    
+    input[type="search"] {
+        -webkit-appearance: textfield; // 1
+        box-sizing: content-box; //2
+    }
+    
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+    
+    fieldset {
+        border: 1px solid #c0c0c0;
+        margin: 0 2px;
+        padding: 0.35em 0.625em 0.75em;
+    }
+    
+    legend {
+        border: 0; // 1
+        padding: 0; // 2
+    }
+    
+    textarea {
+        overflow: auto;
+    }
+    
+    optgroup {
+        font-weight: bold;
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    
+    td,
+    th {
+        padding: 0;
+    }
+    /* normalize.css End */
+    
+    @font-face {
+        font-family: 'Proxima Nova';
+        src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.eot');
+        /* IE9 Compat Modes */
+        src: url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+        url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('http://d29z0kpkvoln4z.cloudfront.net/css/v2/fonts/proximanova-regular-webfont.svg#svgFontName') format('svg');
+        /* Legacy iOS */
+    }
+    /* Hide element till angular is loaded */
+    
+    [ng-cloak] {
+        display: none;
+    }
+    /* Apply box-sizing:border-box; to all elements */
+    
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    html,
+    body {
+        font-family: 'Proxima Nova', 'Open Sans', sans-serif;
+        height: 100%;
+        color: #555;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        white-space: nowrap;
+    }
+    /* Styling for all input */
+    
+    input {
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+    }
+    /* Styled Checkboxes */
+    
+    input[type='checkbox'] {
+        float: left;
+        visibility: hidden;
+        margin-right: 5px;
+    }
+    
+    input[type='checkbox']:before {
+        // @extend .fa;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        content: " ";
+        display: inline-block;
+        visibility: visible;
+        font-size: 12px;
+        width: 12px;
+        height: 12px;
+        color: #f04e37;
+        box-shadow: 0 0 0 1px #f04e37;
+    }
+    
+    input[type='checkbox']:checked:before {
+        content: "\f00c";
+    }
+    /* Styled Radio */
+    
+    input[type='radio'] {
+        float: left;
+        visibility: hidden;
+        margin-right: 5px;
+    }
+    
+    input[type='radio']:before {
+        content: " ";
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+        box-shadow: 0 0 0 2px #f04e37;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        color: #f04e37;
+        background-color: white;
+    }
+    
+    input[type='radio']:checked:before {
+        background-color: #f04e37;
+    }
+    
+    .ty-menu-block,
+    .ty-float-buttons.ty-mobile-contact,
+    .ty-float-buttons.ty-mobile-filter,
+    .ty-float-buttons.ty-mobile-sort {
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1); // IE9 only
+        -o-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+    
+    .ty-float-buttons.ty-mobile-contact,
+    .ty-float-buttons.ty-mobile-filter,
+    .ty-float-buttons.ty-mobile-sort {
+        -webkit-transition: 0.4s ease transform;
+        -o-transition: 0.4s ease transform;
+        transition: 0.4s ease transform;
+        will-change: transform;
+    }
+    /* Header block */
+    
+    .header {
+        width: 100%;
+        height: 45px;
+        padding: 10px 15px;
+        color: white;
+        background-color: #f04e37;
+    }
+    
+    .header .ty-logo {
+        margin: -5px 0 0 50px;
+        display: inline-block;
+        vertical-align: top;
+        width: 35px;
+        height: 35px;
+        background-image: url('/images/ty-logo.png');
+    }
+    
+    .header .navbar {
+        display: none;
+        font-size: 15px;
+        vertical-align: sub;
+    }
+    
+    .header .navbar .ty-link-list {
+        padding-left: 0;
+        margin-top: 0;
+    }
+    
+    .header .navbar .ty-link {
+        margin-left: 10px;
+    }
+    
+    .header .header-right {
+        display: none;
+        float: right;
+    }
+    
+    .header .header-right .contact-icon {
+        font-size: 30px;
+        -webkit-transform: rotate(35deg);
+        -ms-transform: rotate(35deg); // IE9 only
+        -o-transform: rotate(35deg);
+        transform: rotate(35deg);
+    }
+    
+    .header .header-right .contact-info {
+        vertical-align: top;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .header .header-right .contact-info .contact-number {
+        font-weight: bold;
+    }
+    
+    .header .header-right .contact-info .contact-time {
+        font-size: 13px;
+    }
+    
+    .header .header-right:before,
+    .header .header-right:after {
+        content: " ";
+        display: table;
+    }
+    
+    .header .header-right:after {
+        clear: both;
+    }
+    /* All links on ty tours */
+    
+    .ty-link {
+        padding: 5px 2px;
+        color: inherit;
+        text-decoration: none;
+    }
+    /* All list with links on ty tours */
+    
+    .ty-link-list li {
+        display: inline-block;
+        list-style: none;
+    }
+    /* Sidebar menu styles */
+    
+    .ty-main-block,
+    .ty-menu-block {
+        display: inline-block;
+    }
+    
+    .ty-menu-block {
+        -webkit-transition: 0.6s ease min-width;
+        -o-transition: 0.6s ease min-width;
+        transition: 0.6s ease min-width;
+        will-change: transform;
+        vertical-align: top;
+        z-index: 10;
+        min-width: 0%;
+        height: 100%;
+        white-space: nowrap;
+    }
+    
+    .ty-menu-block.ty-open-menu {
+        min-width: 100%;
+        white-space: normal;
+    }
+    
+    .ty-menu-block .ty-menu {
+        // @extend .pos-elem-horizontal-center;
+        list-style: none;
+        padding-top: 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 280px;
+        height: 100%;
+        overflow: auto;
+        padding-left: 0;
+        margin: auto;
+    }
+    
+    .ty-menu-block .ty-menu li {
+        border-bottom: 1px solid #e2e2e2;
+    }
+    
+    .ty-menu-block .ty-menu li:last-of-type {
+        border-bottom-width: 0;
+    }
+    
+    .ty-menu-block .ty-menu li a {
+        // @extend .ty-link;
+        padding: 5px 2px;
+        color: inherit;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        padding: 10px 10px;
+    }
+    
+    .ty-menu-block .ty-menu li a:hover {
+        color: #f04e37;
+    }
+    
+    .ty-main-block {
+        position: relative;
+        width: 100%;
+        min-height:100%;
+        background-color: #F2F2F2;
+        white-space: normal;
+    }
+    /* Mobile menu button styling */
+    
+    .ty-mobile-menu-icon {
+        // @include transition(0.4s ease color);
+        -webkit-transition: 0.4s ease color;
+        -o-transition: 0.4s ease color;
+        transition: 0.4s ease color;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .ty-mobile-menu-icon:before {
+        // @extend .fa-bars;
+        content: "\f0c9";
+    }
+    /* Mobile Contact Buttons */
+    
+    .ty-float-buttons {
+        position: fixed;
+        z-index: 1;
+        border: 1px solid #8C8787;
+        border-radius: 50%;
+        box-shadow: 0 0 3px $floating-icons-border-color;
+        width: 42px;
+        height: 42px;
+    }
+    
+    .ty-float-buttons.ty-mobile-contact {
+        top: 10px;
+        right: 15px;
+        background-color: #2EB12E;
+    }
+    
+    .ty-float-buttons.ty-mobile-filter {
+        bottom: 75px;
+        left: 15px;
+        background-color: #5247EC;
+    }
+    
+    .ty-float-buttons.ty-mobile-sort {
+        bottom: 20px;
+        left: 15px;
+        background-color: #5247EC;
+    }
+    
+    .ty-float-buttons .ty-phone-icon,
+    .ty-float-buttons .ty-filter-icon,
+    .ty-float-buttons .ty-sort-icon {
+        // @extend .pos-elem-horizontal-center;
+        // @extend .pos-elem-vertical-center;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 22px;
+        color: white;
+        height: 20px;
+    }
+    
+    .ty-float-buttons .ty-phone-icon {
+        width: 20px;
+    }
+    
+    .ty-float-buttons .ty-filter-icon {
+        width: 19px;
+    }
+    
+    .ty-float-buttons .ty-sort-icon {
+        width: 19px;
+        // @include rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg); // IE9 only
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    /* Modal Box */
+    
+    .ty-modal-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .page-wrapper {
+        height: 100%;
+    }
+    
+    @media only screen and (min-width: 768px) {
+        body {
+            overflow-x: auto;
+        }
+        body.ty-body-fixed {
+            overflow: visible;
+        }
+        body.ty-body-fixed .page-wrapper {
+            overflow: visible;
+        }
+        .header {
+            height: 58px;
+            color: black;
+            background-color: white;
+            border-bottom: 1px solid #e2e2e2;
+            padding: 10px 50px;
+        }
+        .header .ty-logo {
+            margin: 0 0;
+            width: 195px;
+            height: 35px;
+            background-image: url('http://d29z0kpkvoln4z.cloudfront.net/img/v2/common_sprite_20160202.png');
+        }
+        .header .navbar,
+        .header .header-right {
+            display: inline-block;
+        }
+        .header .navbar .ty-link-list {
+            padding-left: 30px;
+        }
+        .ty-link:hover {
+            color: $ty-color;
+        }
+        .ty-menu-block,
+        .ty-mobile-menu-icon,
+        .ty-float-buttons {
+            display: none;
+        }
+        .ty-modal-box {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    </style>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preload" href="styles/main.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet" href="styles/main.css" />
+    </noscript>
+    <!-- endbuild -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/loadcss/src/loadCSS.js"></script>
+    <!-- endbower -->
     <!-- endbuild -->
 </head>
 
@@ -29,13 +679,13 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="/package/activities">Activities</a>
+                    <a href="/activities">Activities</a>
                 </li>
                 <li>
-                    <a href="/package/tours">Tours & Packages</a>
+                    <a href="/tours">Tours & Packages</a>
                 </li>
                 <li>
-                    <a href="/package/cancel">Cancel Booking</a>
+                    <a href="/cancel">Cancel Booking</a>
                 </li>
             </ul>
         </div><!-- removing space on right due to new line
@@ -46,8 +696,8 @@
                 <div class="navbar">
                     <ul class="ty-link-list">
                         <li><a href="/" class="ty-link">Buses</a></li>
-                        <li><a href="/package/activities" class="ty-link">Activities</a></li>
-                        <li><a href="/package/tours" class="ty-link">Tours</a></li>
+                        <li><a href="/activities" class="ty-link">Activities</a></li>
+                        <li><a href="/tours" class="ty-link">Tours</a></li>
                     </ul>
                 </div>
                 <div class="header-right">
@@ -83,43 +733,34 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
     </script>
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/directives/tyshowimgonload.js"></script>
-    <script src="scripts/directives/tybreadcrumbcategory.js"></script>
-    <script src="scripts/directives/tyfilterlist.js"></script>
-    <script src="scripts/services/toursservice.js"></script>
-    <script src="scripts/services/toursdata.js"></script>
-    <script src="scripts/directives/tyactivities.js"></script>
-    <script src="scripts/directives/tydestinations.js"></script>
-    <script src="scripts/directives/tysortby.js"></script>
-    <script src="scripts/directives/tyactivitieslist.js"></script>
-    <script src="scripts/directives/tydestinationslist.js"></script>
-    <script src="scripts/directives/tysortbylist.js"></script>
-    <script src="scripts/filters/matchesanyin.js"></script>
-    <script src="scripts/directives/tyfilterblock.js"></script>
-    <script src="scripts/filters/filterpackages.js"></script>
-    <script src="scripts/directives/typackages.js"></script>
-    <script src="scripts/directives/tymobileoptions.js"></script>
-    <script src="scripts/controllers/details.js"></script>
-    <script src="scripts/directives/tydetailsdesc.js"></script>
-    <script src="scripts/services/commonfactory.js"></script>
-    <script src="scripts/services/detailsdata.js"></script>
-    <script src="scripts/services/detailsservice.js"></script>
-    <script src="scripts/directives/typackagedetails.js"></script>
-    <script src="scripts/directives/tyeachdesc.js"></script>
+    <script src="scripts/app.js" defer></script>
+    <script src="scripts/controllers/main.js" defer></script>
+    <script src="scripts/controllers/about.js" defer></script>
+    <script src="scripts/directives/tyshowimgonload.js" defer></script>
+    <script src="scripts/directives/tybreadcrumbcategory.js" defer></script>
+    <script src="scripts/directives/tyfilterlist.js" defer></script>
+    <script src="scripts/services/toursservice.js" defer></script>
+    <script src="scripts/services/toursdata.js" defer></script>
+    <script src="scripts/directives/tyactivities.js" defer></script>
+    <script src="scripts/directives/tydestinations.js" defer></script>
+    <script src="scripts/directives/tysortby.js" defer></script>
+    <script src="scripts/directives/tyactivitieslist.js" defer></script>
+    <script src="scripts/directives/tydestinationslist.js" defer></script>
+    <script src="scripts/directives/tysortbylist.js" defer></script>
+    <script src="scripts/filters/matchesanyin.js" defer></script>
+    <script src="scripts/directives/tyfilterblock.js" defer></script>
+    <script src="scripts/filters/filterpackages.js" defer></script>
+    <script src="scripts/directives/typackages.js" defer></script>
+    <script src="scripts/directives/tymobileoptions.js" defer></script>
+    <script src="scripts/controllers/details.js" defer></script>
+    <script src="scripts/directives/tydetailsdesc.js" defer></script>
+    <script src="scripts/services/commonfactory.js" defer></script>
+    <script src="scripts/services/detailsdata.js" defer></script>
+    <script src="scripts/services/detailsservice.js" defer></script>
+    <script src="scripts/directives/typackagedetails.js" defer></script>
+    <script src="scripts/directives/tyeachdesc.js" defer></script>
+    <script src="scripts/directives/tycheckout.js" defer></script>
     <!-- endbuild -->
 </body>
 

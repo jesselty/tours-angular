@@ -1,7 +1,7 @@
 <div>
     <div class="ty-desc-title" ng-transclude></div>
-    <span ng-bind="::eachdesc.note"></span>
+    <span ng-bind="::note"></span>
     <ul>
-        <li ng-repeat="list in eachdesc.list" ng-bind="::list"></li>
+        <li ng-repeat="eachlist in list" ng-bind="::eachlist"></li>
     </ul>
 </div>

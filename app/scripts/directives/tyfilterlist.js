@@ -14,36 +14,31 @@ angular.module('myAppApp')
                 setting: "=",
                 prop: "@"
             },
-            template: '<div class="ty-filter" ng-click="filterlist.toggleDisplay()" ng-class="{\'modal-open\':filterlist.setting[filterlist.prop]}">' +
-                '<span ng-transclude class="ty-filter-name"></span> <i class="fa ty-icon" ng-class="{up:filterlist.setting[filterlist.prop]}"></i>' +
+            template: '<div class="ty-filter" ng-click="toggleDisplay()" ng-class="{\'modal-open\':setting[prop]}">' +
+                '<span ng-transclude class="ty-filter-name"></span> <i class="fa ty-icon" ng-class="{up:setting[prop]}"></i>' +
                 '</div>',
             restrict: 'E',
             replace: true,
             transclude: true,
-            controllerAs: 'filterlist',
-            controller: ['$rootScope', '$scope', function($rootScope, $scope) {
-                var that = this;
-
+            controller: ['CONSTANTS', '$rootScope', '$scope', function(CONSTANTS, $rootScope, $scope) {
                 function toggleDisplayFn() {
-                    var toggledOpenState = !that.setting[that.prop];
+                    var toggledOpenState = !$scope.setting[$scope.prop];
                     if (!$scope.allowmultiple) {
-                        $rootScope.$broadcast('close-modal');
+                        $rootScope.$broadcast(CONSTANTS.CLOSE_MODAL);
                     }
                     if (toggledOpenState) {
-                        $rootScope.$broadcast('open-modal');
+                        $rootScope.$broadcast(CONSTANTS.OPEN_MODAL);
                     }
-                    $scope.setting[that.prop] = that.setting[that.prop] = toggledOpenState;
+                    $scope.setting[$scope.prop] = $scope.setting[$scope.prop] = toggledOpenState;
                 }
 
                 function closeFilterFn() {
-                    $scope.setting[that.prop] = that.setting[that.prop] = false;
+                    $scope.setting[$scope.prop] = $scope.setting[$scope.prop] = false;
                 }
 
-                that.setting = $scope.setting;
-                that.prop = $scope.prop;
-                that.toggleDisplay = toggleDisplayFn;
+                $scope.toggleDisplay = toggleDisplayFn;
 
-                $scope.$on('close-modal', closeFilterFn);
+                $scope.$on(CONSTANTS.CLOSE_MODAL, closeFilterFn);
             }],
             link: function postLink(scope, element, attrs) {}
         };

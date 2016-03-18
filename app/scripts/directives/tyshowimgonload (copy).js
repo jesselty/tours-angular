@@ -15,11 +15,7 @@
                         'imgsrc': '='
                     },
                     replace: true,
-                    template: function(elem, attrs) {
-                        return attrs.elemType == 'img' ?
-                            '<img class="ty-async-img" ng-src="{{tyShow.imgsrc}}" ng-class="{\'loaded\':loaded}"></img>' :
-                            '<div class="ty-async-img" ng-style="{\'background-image\':\'url(\'+tyShow.imgsrc+\')\'}" ng-class="{\'loaded\':loaded}"></div>';
-                    },
+                    template: '<div class="ty-async-img" ng-style="{\'background-image\':\'url(\'+tyShow.imgsrc+\')\'}" ng-class="{\'loaded\':loaded}"></div>',
                     restrict: 'E',
                     controllerAs: 'tyShow',
                     controller: ['$scope', function($scope) {

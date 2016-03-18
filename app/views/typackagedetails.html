@@ -3,15 +3,15 @@
         <div class="ty-package-inner">
             <div class="ty-package-details">
                 <div class="ty-package-details-inner">
-                    <h3 ng-bind="::package.name" title="{{::package.name}}"></h3>
+                    <h3 ng-bind="::eachpackage.name" title="{{::eachpackage.name}}"></h3>
                     <div class="ty-package-info">
-                        <span class="ty-package-location"><i class="fa fa-map-marker"></i> {{::package.location}}</span>
+                        <span class="ty-package-location"><i class="fa fa-map-marker"></i> {{::eachpackage.location}}</span>
                         <span class="ty-bar-seperator ty-location-duration-seperator"></span>
-                        <span class="ty-package-duration"><i class="fa fa-clock-o"></i> {{::package.duration}} <span ng-bind="::(package.duration===1?'day':'days')"></span></span>
+                        <span class="ty-package-duration"><i class="fa fa-clock-o"></i> {{::eachpackage.duration}} <span ng-bind="::(eachpackage.duration===1?'day':'days')"></span></span>
                     </div>
                 </div>
             </div>
-            <ty-show-img-on-load imgsrc="package.image" class="ty-smooth-load"></ty-show-img-on-load>
+            <ty-show-img-on-load imgsrc="eachpackage.image" class="ty-smooth-load"></ty-show-img-on-load>
         </div>
     </div>
 </div>
