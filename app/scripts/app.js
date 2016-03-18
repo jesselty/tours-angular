@@ -20,48 +20,66 @@ angular
         'ui.bootstrap'
     ])
     .constant("CONSTANTS", {
+        'ENV':'PROD',
+        // 'ENV': 'DEV',
         'DATE_REGEX': /^(3[0-1]|[0-2][0-9]|0[1-9])\/(1[0-2]|0[1-9])\/\d{4}/,
         // 'DATE_REGEX': /^(1[0-2]|0?[1-9])\/(3[0-1]|[0-2][0-9]|[1-9])\/\d{4}/,
         'OPEN_MODAL': 'open-modal',
         'CLOSE_MODAL': 'close-modal',
         'DATE_FORMAT': 'dd/MM/yyyy'
     })
-    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-        function checkCategory($route, $location) {
-            var toursCategory = $route.current.params.category;
-            if (toursCategory != 'activities' && toursCategory != 'tours') {
-                $location.path("/");
+    .config(['$routeProvider', '$httpProvider', '$locationProvider', 'CONSTANTS',
+        function($routeProvider, $httpProvider, $locationProvider, CONSTANTS) {
+            function checkCategory($route, $location) {
+                var toursCategory = $route.current.params.category;
+                if (toursCategory != 'activities' && toursCategory != 'tours') {
+                    $location.path("/");
+                }
             }
+
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'views/main.html',
+                    controller: 'MainCtrl',
+                    controllerAs: 'main'
+                })
+                .when('/:category', {
+                    templateUrl: 'views/about.html',
+                    controller: 'AboutCtrl',
+                    controllerAs: 'about',
+                    resolve: {
+                        paramCheck: ['$route', '$location', checkCategory]
+                    }
+                })
+                .when('/:category/:slug?', {
+                    templateUrl: 'views/details.html',
+                    controller: 'DetailsCtrl',
+                    controllerAs: 'details',
+                    resolve: {
+                        paramCheck: ['$route', '$location', checkCategory]
+                    }
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+
+            $httpProvider.interceptors.push([
+                function() {
+                    return {
+                        'request': function(config) {
+                            if (CONSTANTS.ENV == 'PROD' && /^\/views.+\.html$/.test(config.url)) {
+                                var matches = window.location.pathname.match(/^(\/\w+)\/?/);
+                                config.url = matches[matches.length-1]+config.url;
+                            }
+                            return config;
+                        }
+                    };
+                }
+            ]);
+
+            $locationProvider.html5Mode(true);
         }
-
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-                controllerAs: 'main'
-            })
-            .when('/:category', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl',
-                controllerAs: 'about',
-                resolve: {
-                    paramCheck: ['$route', '$location', checkCategory]
-                }
-            })
-            .when('/:category/:slug?', {
-                templateUrl: 'views/details.html',
-                controller: 'DetailsCtrl',
-                controllerAs: 'details',
-                resolve: {
-                    paramCheck: ['$route', '$location', checkCategory]
-                }
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-
-        $locationProvider.html5Mode(true);
-    }]).run(['CONSTANTS', '$rootScope', '$timeout', 'toursData', function(CONSTANTS, $rootScope, $timeout, toursData) {
+    ]).run(['CONSTANTS', '$rootScope', '$timeout', 'toursData', function(CONSTANTS, $rootScope, $timeout, toursData) {
 
         /* properties ,methods and event needed for $rootScope */
         $rootScope.slideList = toursData.slideList;

@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
-    "bootstrap-sass-official": "^3.2.0",
+    "bootstrap-sass-official": "https://github.com/jesselty/twitter-bootstrap.git",
     "angular-cookies": "^1.4.0",
     "angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "font-awesome": "^4.5.0",
-    "angular-bootstrap": "^1.2.4",
+    "font-awesome": "https://github.com/jesselty/font-awesome.git",
+    "angular-bootstrap": "https://github.com/jesselty/bootstrap-bower.git",
     "loadcss": "^1.2.0"
   },
   "devDependencies": {

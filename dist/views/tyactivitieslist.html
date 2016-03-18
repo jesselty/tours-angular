@@ -1,0 +1,17 @@
+<ul class="ty-filter-list filter-list type-list ty-ul-pad-left">
+    <div class="ty-clear" ng-click="clearSelection('filteredActivities')" ng-show="isAnyActivityApplied()">Clear</div>
+    <li ng-repeat="typeCategory in toursData.activities track by $index">
+        <div class="ty-activity-heading"><span class="ty-activity-icon" ng-class="'ty-'+convertToIconName(typeCategory.name)"></span>{{::typeCategory.name}}</div>
+        <form>
+            <ul class="ty-ul-pad-left">
+                <li ng-repeat="subCategory in typeCategory.values | orderBy:['name','orderNo'] track by $index" ng-show="showIfAvailable(subCategory)">
+                    <label ng-click="onFilter('filteredActivities', subCategory)">
+                        <input type="checkbox" ng-model="subCategory.isChecked" ng-init="setFilterCheckedIfInLocal(subCategory)" /> {{::subCategory.name}} </label>
+                </li>
+                <li ng-repeat="subCategory in typeCategory.values | orderBy:['name','orderNo'] track by $index" ng-show="!showIfAvailable(subCategory)">
+                    <label class="unavailable"> {{::subCategory.name}} </label>
+                </li>
+            </ul>
+        </form>
+    </li>
+</ul>

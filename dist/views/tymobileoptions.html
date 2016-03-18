@@ -1,0 +1,11 @@
+<div class="filter-block ty-mobile">
+    <div class="ty-mobile-filter" ng-class="{'show-list':slideList.opened}">
+        <div>
+            <ty-activities-list ng-if="category=='activities'" ng-show="filter.activity">Activity</ty-activities-list>
+            <ty-destinations-list class="ty-mobile" ng-show="filter.destination">Destinations</ty-destinations-list>
+        </div>
+        <div class="ty-filter-list-block right"  ng-show="filter.sort">
+            <ty-sort-by-list></ty-sort-by-list>
+        </div>
+    </div>
+</div>

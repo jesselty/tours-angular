@@ -1,0 +1,12 @@
+<div class="active-filters">
+    <div class="ty-tag" ng-if="category=='activities'" ng-class="{'unavailable':!activityObj.isAvailable}" ng-repeat="(activityName,activityObj) in toursData.filteredActivities track by $index">
+        <label ng-click="removeFilter('filteredActivities',activityObj)">
+            {{::activityName}} <i class="fa fa-times"></i>
+        </label>
+    </div>
+    <div class="ty-tag" ng-class="{'unavailable':!destinationObj.isAvailable}" ng-repeat="(destinationName,destinationObj) in toursData.filteredDestinations track by $index">
+        <label ng-click="removeFilter('filteredDestinations',destinationObj)">
+            {{destinationName}} <i class="fa fa-times"></i>
+        </label>
+    </div>
+</div>
